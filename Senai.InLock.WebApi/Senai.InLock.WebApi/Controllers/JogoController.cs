@@ -10,7 +10,7 @@ using Senai.InLock.WebApi.Repositories;
 namespace Senai.InLock.WebApi.Controllers
 {
     [Route("api/[controller]")]
-    [Produces("application/json")]
+    //[Produces("application/json")]
     [ApiController]
     public class JogoController : ControllerBase
     {

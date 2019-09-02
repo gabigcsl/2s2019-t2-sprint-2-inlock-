@@ -14,7 +14,7 @@ using Senai.InLock.WebApi.ViewModel;
 namespace Senai.InLock.WebApi.Controllers
 {
     [Route("api/[controller]")]
-    [Produces("application.json")]
+    //[Produces("application.json")]
     [ApiController]
     public class UsuarioController : ControllerBase
     {
@@ -29,7 +29,7 @@ namespace Senai.InLock.WebApi.Controllers
 
         [HttpPost]
 
-        public IActionResult Login (LoginViewModel login)
+        public IActionResult Login(LoginViewModel login)
         {
             Usuarios Usuario = usuariosRepository.Login(login);
             if (Usuario == null)

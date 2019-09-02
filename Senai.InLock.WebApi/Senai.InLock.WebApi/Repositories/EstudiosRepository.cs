@@ -48,6 +48,7 @@ namespace Senai.InLock.WebApi.Repositories
             {
                 Estudios estudioBuscado = ctx.Estudios.FirstOrDefault(x => x.IdEstudio == estudios.IdEstudio);
                 ctx.Estudios.Update(estudios);
+                estudioBuscado.PaisOrigem = estudios.PaisOrigem;
                 ctx.SaveChanges();
             }
         }
