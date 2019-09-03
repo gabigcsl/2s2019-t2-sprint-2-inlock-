@@ -21,6 +21,7 @@ namespace Senai.InLock.WebApi.Repositories
             using (InLockContext ctx = new InLockContext())
             {
                 ctx.Estudios.Add(estudios);
+                ctx.SaveChanges();
             }
         }
 
@@ -47,8 +48,8 @@ namespace Senai.InLock.WebApi.Repositories
             using (InLockContext ctx = new InLockContext())
             {
                 Estudios estudioBuscado = ctx.Estudios.FirstOrDefault(x => x.IdEstudio == estudios.IdEstudio);
-                ctx.Estudios.Update(estudios);
                 estudioBuscado.PaisOrigem = estudios.PaisOrigem;
+                ctx.Estudios.Update(estudioBuscado);
                 ctx.SaveChanges();
             }
         }

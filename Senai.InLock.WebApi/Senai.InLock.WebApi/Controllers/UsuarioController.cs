@@ -14,7 +14,7 @@ using Senai.InLock.WebApi.ViewModel;
 namespace Senai.InLock.WebApi.Controllers
 {
     [Route("api/[controller]")]
-    //[Produces("application.json")]
+    [Produces("application/json")]
     [ApiController]
     public class UsuarioController : ControllerBase
     {
@@ -40,12 +40,11 @@ namespace Senai.InLock.WebApi.Controllers
             var claims = new[]
             {
                     new Claim(JwtRegisteredClaimNames.Email, Usuario.Email),
-                    new Claim("chave", "0132"),
                     new Claim(JwtRegisteredClaimNames.Jti, Usuario.IdUsuario.ToString()),
                     new Claim(ClaimTypes.Role, Usuario.IdPermissaoNavigation.Tipo),
                 };
 
-            var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("Inlock-chave-autenticacao"));
+            var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("InLock-chave-autenticacao"));
 
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 

@@ -22,6 +22,7 @@ namespace Senai.InLock.WebApi.Repositories
             using (InLockContext ctx = new InLockContext())
             {
                 ctx.Jogos.Add(jogos);
+                ctx.SaveChanges();
             }
         }
 
@@ -37,7 +38,7 @@ namespace Senai.InLock.WebApi.Repositories
         {
             using (InLockContext ctx = new InLockContext())
             {
-                Jogos jogos = ctx.Jogos.Find(id);
+                Jogos jogos = ctx.Jogos.FirstOrDefault(x => x.IdJogos == id);
                 ctx.Jogos.Remove(jogos);
                 ctx.SaveChanges();
             }
@@ -48,6 +49,7 @@ namespace Senai.InLock.WebApi.Repositories
             using (InLockContext ctx = new InLockContext())
             {
                 Jogos JogoBuscado = ctx.Jogos.FirstOrDefault(x => x.IdJogos == jogos.IdJogos);
+                JogoBuscado.Nome = jogos.Nome;
                 ctx.Jogos.Update(JogoBuscado);
                 ctx.SaveChanges();
             }
